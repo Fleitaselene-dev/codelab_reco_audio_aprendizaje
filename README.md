@@ -7,7 +7,7 @@ Este proyecto es una implementación basada en el [Codelab oficial de TensorFlow
 En este proyecto:
 
 - Carga de un modelo previamente entrenado que reconoce comandos de voz.
-  Utilizacion del  micrófono para recolectar sonidos personalizados.
+- Utilizacion del  micrófono para recolectar sonidos personalizados.
 - Entrenamiento de una red neuronal simple para reconocer esos sonidos en tiempo real.
 
 ##  Cómo ejecutar este proyecto
