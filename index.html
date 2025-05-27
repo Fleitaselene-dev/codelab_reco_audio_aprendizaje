@@ -5,24 +5,105 @@
     <!-- modelo de comando de voz -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/speech-commands"></script>
   </head>
+  <style>
+    body {
+      background-color: rgb(249, 224, 228);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+     h1 {
+        font-size: 2rem;
+        color: #f16e8a;
+        margin-bottom: 0.5rem;
+      }
+
+      h3 {
+        margin-bottom: 1rem;
+        color: #f57691;
+      }
+
+      .container-button {
+        background: #ffffff;
+        padding: 2rem;
+        border-radius: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.458);
+        text-align: center;
+        margin-bottom: 2rem;
+        margin: 3%;
+      }
+      
+
+      button {
+        background-color: #f57691;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.458);
+        color: white;
+        border: none;
+        border-radius: 12px;
+        padding: 0.6rem 1.2rem;
+        margin: 0.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
+        background-color: #f57691;
+      }
+
+      ul {
+        text-align: left;
+        list-style: none;
+        padding: 0;
+        margin-top: 1rem;
+        color: #444;
+      }
+
+      ul li::before {
+        content: "• ";
+        color: #feb7c6;
+        font-weight: bold;
+      }
+
+      input[type="range"] {
+        margin-top: 1rem;
+        width: 50%;
+        accent-color: #f57691;
+      }
+      input[type="range"]:hover {
+accent-color: #ff6082 ;
+      }
+  </style>
   <body>
     <!-- colab: https://codelabs.developers.google.com/codelabs/tensorflowjs-audio-codelab?hl=es_419#0 -->
-    <div id="console"></div>
+<h1>Reconocimiento de audio mediante aprendizaje por transferencia</h1>
+<div class="container-button">
+<div id="console"></div>
 <h3>Haz un sonido distintivo para cada botón</h3>
-<p>Ejemplo: Preciona "left" por 150s mientras silvas</p>
+<p>Por ejemplo: Manten precionado<strong> “Left”</strong> por 10s mientras silvas.</p>
 <button id="left" onmousedown="collect(0)" onmouseup="collect(null)">Left</button>
 <button id="right" onmousedown="collect(1)" onmouseup="collect(null)">Right</button>
 <button id="noise" onmousedown="collect(2)" onmouseup="collect(null)">Noise</button>
 <br/><br/>
-<button id="train" onclick="train()">Entrenar</button>
+<p >
+  <h3>Entrena el modelo</h3>
+    Luego de grabar sonidos para cada botón, presiona el siguiente <br> botón para entrenar el modelo.
+    Durante el entrenamiento, los <br>botones estarán deshabilitados temporalmente.
+  </p>
+  <button id="train" onclick="train()">Entrenar</button>
 <br/><br/>
+<h3> Escucha en tiempo real</h3>
+<p>Repite los sonidos, el modelo los reconocera y te los mostrara <br> en el siguiente formato: </p>
 <ul> Las etiquetas para las clases son números enteros:
 <li>0 = Left</li>
 <li>1 = Right</li>
 <li>2 = Noise</li>
 </ul>
-<button id="listen" onclick="listen()">Listen</button>
+<button id="listen" onclick="listen()">Escuchar</button>
 <input type="range" id="output" min="0" max="10" step="0.1">
-    <script src="index.js"></script>
+</div>
+  
+<script src="index.js"></script>
   </body>
 </html>
